@@ -1,7 +1,7 @@
 # CMPS 2200  Recitation 04
 
-**Name (Team Member 1):**_________________________  
-**Name (Team Member 2):**_________________________
+**Name (Team Member 1):**____________Joshua Sasson________  
+**Name (Team Member 2):**_________Aaron Gershkovich__________
 
 
 In this lab you will practice using the `map` and `reduce` functions. These functions are commonly used together in a `map-reduce` framework, used by Google and others to parallelize and scale common computations.
@@ -37,12 +37,11 @@ To use this function to count words, you'll need to implement your own `map_f` a
 4. Assume that a word `w` appears `n` times. What is the **work** and **span** of `word_count_reduce` for this word, assuming a parallel implementation of the `reduce` function?
 
 **Enter answer here**
-
-
+the work of reduce is O(n) and the span of reduce assuming a parallel implementation is O(lgn)
 5. Why are we going through all this trouble? Couldn't I just use this function to count words?
 
 ```python
-docs = ['i am sam i am', 'sam is ham']
+docs = ['i am sam i am', 'sam is ham']   
 counts = {}
 for doc in docs:
     for term in doc.split():
@@ -53,6 +52,9 @@ for doc in docs:
 What is the problem that prevents us from easily parallelizing this solution?
 
 **Enter answer here**
+The problem that prevents us from parallelizing the algorithm is the iterative nature. Because it iterates through
+the entire doc if it was parralelized the resulting answer would not be correct as adding terms to the same 
+tuples simoultaneously will create errors and cause the answer to vary based on chance.  
 
 
 ## Part 2: Sentiment analysis

@@ -1,5 +1,4 @@
 # recitation-04
-
 from collections import defaultdict
 
 
@@ -37,8 +36,11 @@ def word_count_map(doc):
     [('i', 1), ('am', 1), ('sam', 1), ('i', 1), ('am', 1)]
     """
     ###TODO
-    
-    
+    tokens = doc.split()
+    result= []
+    for token in tokens:
+        result.append((token,1))
+    return result
 
 
 def word_count_reduce(group):
@@ -54,6 +56,12 @@ def word_count_reduce(group):
     NOTE: you should use call the `reduce` function here.
     """
     ###TODO
+    list= group[1]
+    reduced_count = reduce( plus,1, list)
+    return (group[0],reduced_count)
+
+
+
     
     
 
@@ -123,4 +131,15 @@ def sentiment_map(doc,
     [('negative', 1), ('negative', 1)]
     """
     ###TODO
+    tokens = doc.split()
+    sent_tokens =[]
+    for token in tokens:
+        if token in pos_terms:
+            sent_tokens.append(('positive',1))
+        if token in neg_terms:
+            sent_tokens.append(('negative',1))
+    return sent_tokens
+
+
+
 
